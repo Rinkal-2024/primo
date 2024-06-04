@@ -1,24 +1,24 @@
 import { useEffect } from "react";
-import "./App.css";
+// import "./App.css";
 
 function App() {
-  const loaded = true;
+  // const loaded = true;
 
   const externalJS = (callback) => {
     const root = document.getElementById("root");
     const script = document.createElement("script");
-    script.setAttribute( "src", "https://ps.visarity.com/demos/preview/handler.js");
+    script.setAttribute("src", "https://ps.visarity.com/demos/preview/handler.js");
     script.onreadystatechange = callback;
     script.onload = callback;
-    root.append(script);
+    root.append(script);  
   };
   useEffect(() => {
     externalJS(function () {
       console.log("window", window);
       if (window.PrimoPreviewHandler) {
         const params = [
-          "v3ad-d731-872a-a237-43f3f",
-          "v3ad-77b1-b6ac-81c6-029d3",
+          // "v3ad-d731-872a-a237-43f3f",
+          // "v3ad-77b1-b6ac-81c6-029d3",
           "v3ad-afce-910f-ceba-be8f6",
           "v3ad-d731-872a-a237-43f3f",
           "v3ad-e78c-9ee8-70d0-7e20d",
@@ -32,7 +32,12 @@ function App() {
           "v3ad-9341-87d1-1799-7f495",
           "v3ad-9d8c-a7a0-a5b3-f55e2",
         ];
-
+        params.forEach((params) =>{
+        //  console.log(params);
+        if(!params){
+          return params
+        }
+        })
         console.log(params);
 
         window.PrimoPreviewHandler.getHandler({
@@ -42,22 +47,32 @@ function App() {
         })
           .then((handler) => {
             console.log(handler);
+            console.log();
           })
           .catch((error) => {
             console.log(error);
           });
         console.log(window.PrimoPreviewHandler);
+
       } else {
         console.log("primo not available ");
       }
     });
   }, []);
 
+
   return (
+    
     <div className="App">
-      {loaded ? "Script Loaded" : "Script is Not Loaded"}
+      <div className="header-text">
+      <b className="me-2">PREVIEW</b>
+      <img src= "copy.svg"></img>
+     
+
+      </div>
+    
+
     </div>
   );
 }
-
 export default App;
