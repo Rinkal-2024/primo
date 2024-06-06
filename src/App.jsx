@@ -1,7 +1,12 @@
 import { useEffect } from "react";
-import "./App.css";
+import { useLocation, useNavigate, } from "react-router-dom";
+// import {copyIcon} from "./assets/copy.svg"
 
+import "./App.css";
 const App = () => {
+  const location = useLocation();
+  // const navigate = useNavigation()
+  const navigate = useNavigate()
   const externalJS = (callback) => {
     const root = document.getElementById("root");
     const script = document.createElement("script");
@@ -13,53 +18,83 @@ const App = () => {
     script.onload = callback;
     root.append(script);
   };
+
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const creativeID = searchParams.get('creativeID');
+    if (window.location.search.length === 0) {
+      navigate({
+        pathname: "/",
+        search: "?creativeID=v3ad-e78c-9ee8-70d0-7e20d",
+      });
+    }
+    if (!creativeID) {
+      console.error('Missing required parameters in the URL give the creativeID');
+      return;
+    }
     externalJS(function () {
       // console.log("window", window);
+   
       if (window.PrimoPreviewHandler) {
-        // const params = [
-        //   "v3ad-afce-910f-ceba-be8f6",
-        //   "v3ad-d731-872a-a237-43f3f",
-        //   "v3ad-e78c-9ee8-70d0-7e20d",
-        //   "v3ad-6aec-9741-af36-d0883",
-        //   "v3ad-4817-96f6-06d2-2710c",
-        //   "v3ad-2171-8293-5adb-35160",
-        //   "v3ad-abc7-a885-f790-5d1f4",
-        //   "v3ad-3441-a59d-61ac-b28a8",
-        //   "v3ad-9f69-9e42-4432-c7466",
-        //   "v3ad-511a-b39f-f5bc-39b52",
-        //   "v3ad-9341-87d1-1799-7f495",
-        //   "v3ad-9d8c-a7a0-a5b3-f55e2",
-        // ];
-        // console.log(params);
+        const box1 = document.getElementById("box1");
+        const box2 = document.getElementById("box2");
+        const f1b = document.getElementById("f1b");
+        const f2a = document.getElementById("f2a");
+        const f2b = document.getElementById("f2b");
+        const f3a = document.getElementById("f3a");
+        const box4 = document.getElementById("box4");
+        const b1 = document.getElementById("b1");
+        const b2 = document.getElementById("b2");
 
         window.PrimoPreviewHandler.getHandler({
-          creativeID: "v3ad-9f69-9e42-4432-c7466",
-          device: "DESKTOP",
-          orientation: "PORTRAIT",
+          creativeID: creativeID,
+          // Events: (event) => {
+          //   console.log("Ad Event:", event);
+          // },
+        }).then((handler) => {
+          const width = handler.info.width;
+          const height = handler.info.height;
+          console.log("Handler dimensions:", { height, width });
+          console.log("Handler object:", handler.info);
+          if (height <= 160 && height >= 100 && width <= 970 && width >= 900) {
+            return handler.setupPlayer(box1, " DESKTOP", {});
+          } else if (height <= 250 && height >= 161 && width <= 970 && width >= 800) {
+            return handler.setupPlayer(box2, "DESKTOP ", {});
+          } else if (height <= 250 && height >= 201 && width <= 300 && width >= 200) {
+            return handler.setupPlayer(f1b, "DESKTOP", {});
+          } else if (height <= 200 && height >= 150 && width <= 302 && width >= 200) {
+            return handler.setupPlayer(f2a, "DESKTOP", {});
+          } else if (height <= 280 && height >= 200 && width <= 336 && width >= 303) {
+            return handler.setupPlayer(f2b, "DESKTOP", {});
+          } else if (height <= 600 && height >= 400 && width <= 320 && width >= 100) {
+            return handler.setupPlayer(f3a, "DESKTOP", {});
+          } else if (height <= 160 && height >= 100 && width <= 970 && width >= 800) {
+            return handler.setupPlayer(box4, "DESKTOP", {});
+          } else if (height <= 90 && height >= 10 && width <= 728 && width >= 235) {
+            return handler.setupPlayer(b1, " DESKTOP", {});
+          } else if (height <= 90 && height >= 10 && width <= 234 && width >= 100) {
+            return handler.setupPlayer(b2, "DESKTOP ", {});
+          }
+        }).then((player) => {
+          console.log("player setup complete", player);
         })
-          .then((handler) => {
-            console.log(handler);
-
-            const a = document.getElementById("f1b");
-            console.log(a, "hello");
-
-            handler.setupPlayer(a, "", "", "DESKTOP");
-
-            console.log(handler.info);
-          })
           .catch((error) => {
-            console.log(error);
+            console.error("Error in player:", error);
           });
-        console.log(window.PrimoPreviewHandler,  "---->");
+
       } else {
-        console.log("primo not available ");
+        console.error("PrimoPreviewHandler is not available");
       }
     });
-  }, []);
-
+  });
   return (
     <div className="container-fluid ">
+      <div className="Header">
+        <b className="header-text">PREVIEW</b>
+        <b className="header-text ">Scroll2Animate 300x250 Inline</b>
+    <img src="https://primo-app.vercel.app/static/media/mobiledefault.ba6ea1d67c509efd9b8e7da634edfe25.svg"></img>
+    <img src="https://primo-app.vercel.app/static/media/canvasdefault.918034f69bf57230245889f37219c73a.svg"></img>
+      </div>
       <div className="main">
         <div className="box-1" id="box1"></div>
         <div className="box-2" id="box2"></div>
@@ -102,8 +137,7 @@ const App = () => {
         </div>
 
         <div className="box-4" id="box4"></div>
-      </div>
-      <div className="main2"></div>
+      </div>  
     </div>
   );
 };
