@@ -5,7 +5,6 @@ import { useLocation, useNavigate, } from "react-router-dom";
 import "./App.css";
 const App = () => {
   const location = useLocation();
-  // const navigate = useNavigation()
   const navigate = useNavigate()
   const externalJS = (callback) => {
     const root = document.getElementById("root");
@@ -88,13 +87,15 @@ const App = () => {
     });
   });
   return (
-    <div className="container-fluid ">
+    <>
+    
       <div className="Header">
         <b className="header-text">PREVIEW</b>
         <b className="header-text ">Scroll2Animate 300x250 Inline</b>
-    <img src="https://primo-app.vercel.app/static/media/mobiledefault.ba6ea1d67c509efd9b8e7da634edfe25.svg"></img>
-    <img src="https://primo-app.vercel.app/static/media/canvasdefault.918034f69bf57230245889f37219c73a.svg"></img>
+    
       </div>
+
+      <div className="container-fluid ">
       <div className="main">
         <div className="box-1" id="box1"></div>
         <div className="box-2" id="box2"></div>
@@ -137,8 +138,13 @@ const App = () => {
         </div>
 
         <div className="box-4" id="box4"></div>
-      </div>  
-    </div>
+      </div>
+      </div>
+
+      <div className="footer"></div>
+
+    
+    </>
   );
 };
 export default App;
