@@ -198,3 +198,12 @@ li {
   height: 5%;
   width: 5%;
 }
+.footer{
+  background-color: #4d4d4d;
+  bottom: 0;
+  height: 48px;
+  margin-top: 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+}
