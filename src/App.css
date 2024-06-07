@@ -215,3 +215,30 @@ li {
   width: 100%;
   z-index: 9;
 }
+.qr{
+  left: 0;
+  padding-bottom: 48px;
+  width: 468px;
+  position: fixed;
+}
+h2 {
+  font-size: calc(1.325rem + .9vw);
+}
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+.qr-title{
+  align-items: center;
+  color: #e6e6e6;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  margin-left: 10px;
+}
+.accordion-button {
+  background: #333;
+  border-radius: 0;
+  border-radius: 5px 5px 0 0;
+}
