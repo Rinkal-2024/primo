@@ -89,18 +89,22 @@ const App = () => {
     <>
     
       <div className="Header">
-        <b className="header-text">PREVIEW</b>
-        <b className="header-text ">Scroll2Animate 300x250 Inline</b>
-        <svg width="26" height="44" viewBox="0 0 26 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="24" height="42" rx="3" fill="#E6E6E6"/>
-        <rect x="11" y="37" width="4" height="4" rx="2" fill="#666666"/>
-        <rect x="4" y="8" width="18" height="28" rx="2" fill="#64C8FF"/>
-        <rect x="9" y="4" width="8" height="2" rx="1" fill="#666666"/>
-        <rect x="1" y="1" width="24" height="42" rx="3" stroke="#666666" />
-        </svg>
-        
-
-    
+        <div className="header-text">
+        <b className="text ">PREVIEW</b>
+        <b className="text ms-2">Scroll2Animate 300x250 Inline</b></div>
+        <div className="header-icon">
+        <span>
+        <img className="me-1" src="https://primo-app.vercel.app/static/media/mobiledefault.ba6ea1d67c509efd9b8e7da634edfe25.svg" id="myImg"></img>
+        </span>
+        <span className="desktop">
+        <img className="me-1" src="https://primo-app.vercel.app/static/media/desktopdefault.d9d966935b9e5559e5ad471fb9a454c9.svg"></img>
+        <span className="rectangle">
+        <img src="https://primo-app.vercel.app/static/media/Rectangle2.974ed8f98a734d787a93de3b98260e03.svg"/></span>
+        </span>
+        <span>
+        <img className="me-1 " src="https://primo-app.vercel.app/static/media/canvasdefault.918034f69bf57230245889f37219c73a.svg"/>
+        </span>
+        </div>
       </div>
 
       <div className="container-fluid ">
@@ -149,7 +153,7 @@ const App = () => {
       </div>
       </div>
 
-      <div className="footer"></div>
+      <div className="footer  "></div>
 
     
     </>
