@@ -168,8 +168,6 @@ const App = () => {
       </h2>
       </div>
       </div>
-
-      
       <div className="footer"></div>
     </>
   );
