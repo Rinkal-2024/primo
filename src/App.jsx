@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, } from "react-router-dom";
-// import {copyIcon} from "./assets/copy.svg"
 
 import "./App.css";
 const App = () => {
@@ -92,6 +91,15 @@ const App = () => {
       <div className="Header">
         <b className="header-text">PREVIEW</b>
         <b className="header-text ">Scroll2Animate 300x250 Inline</b>
+        <svg width="26" height="44" viewBox="0 0 26 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="24" height="42" rx="3" fill="#E6E6E6"/>
+        <rect x="11" y="37" width="4" height="4" rx="2" fill="#666666"/>
+        <rect x="4" y="8" width="18" height="28" rx="2" fill="#64C8FF"/>
+        <rect x="9" y="4" width="8" height="2" rx="1" fill="#666666"/>
+        <rect x="1" y="1" width="24" height="42" rx="3" stroke="#666666" />
+        </svg>
+        
+
     
       </div>
 
