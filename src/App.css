@@ -193,7 +193,7 @@ li {
   width: 662px;
   height: 20px;
   background-color: #d9d9d9;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
 .li2-4 {
@@ -220,15 +220,19 @@ li {
   padding-bottom: 48px;
   width: 468px;
   position: fixed;
+  bottom: 0;
+  height: 310px;
+  box-sizing: border-box;
+  margin-left: 8px;
 }
-h2 {
-  font-size: calc(1.325rem + .9vw);
+
+.accordion-button {
+  background: #333;
+  border-radius: 0;
+  border-radius: 5px 5px 0 0;
 }
-svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
-  overflow: visible;
-  box-sizing: content-box;
-}
-.qr-title{
+
+span.qr_title {
   align-items: center;
   color: #e6e6e6;
   display: flex;
@@ -237,8 +241,6 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
   line-height: 1;
   margin-left: 10px;
 }
-.accordion-button {
-  background: #333;
-  border-radius: 0;
-  border-radius: 5px 5px 0 0;
+.accordion-flush .accordion-item {
+  border-radius: 5px 5px 5px 5px;
 }
