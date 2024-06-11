@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, } from "react-router-dom";
+import {qrcode} from "qrcode"
 
 import "./App.css";
 const App = () => {
   const location = useLocation();
   const navigate = useNavigate()
+
   const externalJS = (callback) => {
     const root = document.getElementById("root");
     const script = document.createElement("script");
@@ -20,6 +22,8 @@ const App = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const creativeID = searchParams.get('creativeID');
+    console.log(searchParams , 'sp');
+    console.log(creativeID , "ci");
     if (window.location.search.length === 0) {
       navigate({
         pathname: "/",
@@ -92,6 +96,7 @@ const App = () => {
         <div className="header-text">
         <b className="text ">PREVIEW</b>
         <b className="text ms-2">Scroll2Animate 300x250 Inline</b></div>
+        
 
         <div className="header-icon">
         <span>
@@ -154,20 +159,79 @@ const App = () => {
       </div>
     
       </div>
+      
       <div className="qr">
-      <div className="accordion-item">
-      <h2 className="accordion-header" id="flush-headingOne">
-      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
-      <div className="qr_info">
       <span className="qr_title">
+      <img src="https://primo-app.vercel.app/static/media/caret-down.8ff183b91897ed9d706f.svg"></img>
       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info" className="svg-inline--fa fa-info mx-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
-      <path fill="currentColor" d="M48 80a48 48 0 1 1 96 0A48 48 0 1 1 48 80zM0 224c0-17.7 14.3-32 32-32H96c17.7 0 32 14.3 32 32V448h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H64V256H32c-17.7 0-32-14.3-32-32z"></path></svg>Creative info</span>
-      <span className="device_res"></span>
+      <path fill="currentColor" d="M48 80a48 48 0 1 1 96 0A48 48 0 1 1 48 80zM0 224c0-17.7 14.3-32 32-32H96c17.7 0 32 14.3 32 32V448h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H64V256H32c-17.7 0-32-14.3-32-32z"></path>
+      </svg>Creative info
+      <span className="device_res">{}</span>
+      </span>
+      <div className="accordion-body">
+      <div className="qr_body">
+      <div className="device_layout">
+      <img src= {`https://ps.visarity.com/campaigns/{creativeID}/splash.jpg`} alt=""className="img"/> 
       </div>
-      </button>
-      </h2>
+      <div className="device_info">
+      <div className="d-info1">
+      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="square" className="svg-inline--fa fa-square " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor" d="M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM384 80H64C55.16 80 48 87.16 48 96V416C48 424.8 55.16 432 64 432H384C392.8 432 400 424.8 400 416V96C400 87.16 392.8 80 384 80z"></path></svg>
+      <span>INFEED</span>
+      </div>
+      <div className="d-info2">
+      <div> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="mobile" className="svg-inline--fa fa-mobile " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <path fill="currentColor" d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zm80 432h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z">
+      </path></svg> <span>Mobile</span>
+       </div>
+       <div> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="desktop" className="svg-inline--fa fa-desktop " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+       <path fill="currentColor" d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64H240l-10.7 32H160c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H346.7L336 416H512c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM512 64V288H64V64H512z">
+       </path></svg> <span>Desktop</span> </div>
+      </div>
+      <div className="d-info3">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="expand" className="svg-inline--fa fa-expand " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor" d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z">
+      </path></svg>
+      <span>Responsive disabled<br />Preview: 9:16 (1:1.77)</span>
+      </div>
+      <div className="d-info4">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="video" className="svg-inline--fa fa-video " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path fill="currentColor" d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z">
+      </path></svg>
+      <span>Video disabled</span>
+      </div>
+      <div className="d-info5">
+      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="paper-plane" className="svg-inline--fa fa-paper-plane " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor" d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z">
+      </path></svg>
+      <span>2.738 MB (max 2.5MB)</span>
       </div>
       </div>
+      <div className="device_qr">{qrcode}
+      <span id="copy_qrcode">
+      <div className="p-0 m-0 device_qrcode " id="qrcode" >
+      </div>
+      <div className="download_qr">Download <br />QR Code
+      </div>
+      <div id="qrcode-download">
+      </div>
+      </span>
+          </div>     
+      </div>
+      </div>
+      </div>
+
+      <div className="player_area">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-rotate-right" className="svg-inline--fa fa-arrow-rotate-right mx-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor" d="M370.3 160H320c-17.7 0-32 14.3-32 32s14.3 32 32 32H448c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L398.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L370.3 160z">
+      </path>
+      </svg>
+      <span className="play_time px-2">30.00</span>
+      <img src="https://primo-app.vercel.app/static/media/Icon(2).a69916613c7a934edb01348a4c98d157.svg" className= "player"/>
+      </div>
+
+   
+
       <div className="footer"></div>
     </>
   );

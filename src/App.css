@@ -13,9 +13,8 @@
   left: 15px;
   position: absolute;
   top: 50%;
- 
 }
-.desktop{
+.desktop {
   position: relative;
 }
 
@@ -30,11 +29,15 @@
 }
 
 .main {
-  width: 70%;
+  width: 100%;
   height: 100%;
   overflow: scroll;
   overflow-x: hidden;
-  padding-top: 30px;
+  height: 100vh;
+  overflow-y: auto;
+  /* position: relative; */
+  /* padding-top: 30px; */
+  max-width: 970px;
 }
 .box-1 {
   width: 970px;
@@ -205,7 +208,7 @@ li {
   height: 5%;
   width: 5%;
 }
-.footer{
+.footer {
   background-color: #4d4d4d;
   bottom: 0;
   height: 48px;
@@ -214,7 +217,7 @@ li {
   width: 100%;
   z-index: 9;
 }
-.qr{
+.qr {
   left: 0;
   padding-bottom: 48px;
   width: 468px;
@@ -222,12 +225,11 @@ li {
   bottom: 0;
   height: 310px;
   box-sizing: border-box;
-  margin-left: 8px;
+  border-radius: 4px;
 }
 
-.accordion-button {
+.qr_title {
   background: #333;
-  border-radius: 0;
   border-radius: 5px 5px 0 0;
 }
 
@@ -238,8 +240,145 @@ span.qr_title {
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
+}
+
+.svg-inline--fa {
+  width: 6px;
+  display: var(--fa-display, inline-block);
+  height: 3em;
+  vertical-align: -0.125em;
+}
+.accordion-body{
+  background: #f5f5f5;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0,0,0,.15);
+    padding: 1rem 1.25rem;
+    box-sizing: border-box;
+    height: 221px;
+    box-sizing: border-box;
+}
+.qr_body{
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+  text-align: center;
+  height: 184px;
+}
+.device_layout{
+  height: 80px;
+  width: 80px;
+  border: 5px solid #b3b3b3;
+   
+}
+.img{
+  border-radius: 4px;
+  height: auto;
+  max-width: 100%;
+  width: auto;
+}
+.device_info{
+  background: #fff;
+  border-radius: 4px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 8px;
+  padding: 8px 15px;
+  text-align: left;
+  width: 209px;
+}
+.device_info svg {
+  margin-right: 10px;
+}
+.svg-inline--fa.fa-square {
+  height: 15px;
+  width: 13px;
   margin-left: 10px;
 }
-.accordion-flush .accordion-item {
-  border-radius: 5px 5px 5px 5px;
+.svg-inline--fa.fa-mobile {
+  height: 15px;
+  width: 13px;
+  margin-left: 10px;
+}
+.svg-inline--fa.fa-desktop {
+  height: 15px;
+  width: 13px;
+  margin-left: 10px;
+}
+.svg-inline--fa.fa-expand{
+  height: 15px;
+  width: 12px;
+  margin-left: 10px;
+
+}
+.svg-inline--fa.fa-video{
+  height: 15px;
+  width: 13px;
+  margin-left: 10px;
+}
+.svg-inline--fa.fa-paper-plane{
+  height: 15px;
+  width: 13px;
+  margin-left: 10px;
+}
+.d-info4{
+  margin-top: 25px;
+}
+.d-info5{
+  color: #ff3c28;
+}
+.device_qr {
+  background: #fff;
+  border: 5px solid #b3b3b3;
+  border-radius: 4px;
+  height: 145px;
+  width: 95px;
+}
+#copy_qrcode {
+  display: inline-block;
+  position: relative;
+}
+.download_qr {
+  background: #fff;
+  color: #b3b3b3;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  padding-bottom: 15px;
+}
+.player_area {
+  background: hsla(0,0%,100%,.9);
+  border: 3px solid #ccc;
+  border-radius: 64px;
+  margin-left: 50%;
+  margin-bottom: 60px;
+  z-index: 999999999;
+  width: 144px;
+  height: 40px;
+  bottom: 0;
+  box-sizing: border-box;
+  /* padding-bottom: 48px; */
+  position: fixed
+
+
+
+}
+.play_time {
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+    width: 50px;
+    text-align: center;
+}
+.svg-inline--fa.fa-arrow-rotate-right{
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  /* margin-right: 0.25rem!important; */
+  margin-left:  0.30rem!important;
+  margin-top: 5px;
+}
+.player{
+  margin-bottom: 10px;
 }
